@@ -1,5 +1,5 @@
 #########################################################################################################################################
-#Projet ExData_Plotting1 - Plot 1
+#Projet ExData_Plotting1 - Plot 2
 #########################################################################################################################################
 
 # input data
@@ -24,10 +24,9 @@ for (i in 3:9){
 #Filter data
 data1 <- subset(data, Date == "2007-2-1" | Date == "2007-2-2")
 
+#Plot2
+png(file = "plot2.png", width=480, height=480)
 
-#Plot1
-png(file = "plot1.png", width=480, height=480)
-
-hist(data1$Global_active_power, col = "red", xlab = "Global Active Power (killowatts)", main = "Global Active Power")
+plot(data1$Date.Time, data1$Global_active_power, type = "l", ylab = "Global Active Power (killowatts)", xlab ="")
 
 dev.off()

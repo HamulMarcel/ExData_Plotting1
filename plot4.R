@@ -1,5 +1,5 @@
 #########################################################################################################################################
-#Projet ExData_Plotting1 - Plot 1
+#Projet ExData_Plotting1 - Plot 4
 #########################################################################################################################################
 
 # input data
@@ -24,10 +24,24 @@ for (i in 3:9){
 #Filter data
 data1 <- subset(data, Date == "2007-2-1" | Date == "2007-2-2")
 
+#Plot4
+png(file = "plot4.png", width=480, height=480)
 
-#Plot1
-png(file = "plot1.png", width=480, height=480)
+par (mfrow = c(2,2), mar = c(5,4,1,1))
 
-hist(data1$Global_active_power, col = "red", xlab = "Global Active Power (killowatts)", main = "Global Active Power")
+#1,1
+plot(data1$Date.Time, data1$Global_active_power, type = "l", ylab = "Global Active Power (killowatts)", xlab ="")
+
+#1,2
+plot(data1$Date.Time, data1$Voltage, type = "l", ylab = "Voltage", xlab ="")
+
+#1,2
+plot(data1$Date.Time, data1$Sub_metering_1, type = "l", ylab = "Energy sub metering", xlab ="")
+lines(data1$Date.Time, data1$Sub_metering_2, type = "l", col = "red")
+lines(data1$Date.Time, data1$Sub_metering_3, type = "l", col = "blue")
+legend("topright", lty = c(1,1,1), col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+
+#2,2
+plot(data1$Date.Time, data1$Global_reactive_power, type = "l",ylab = "Global_reactive_power", xlab ="")
 
 dev.off()

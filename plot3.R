@@ -1,5 +1,5 @@
 #########################################################################################################################################
-#Projet ExData_Plotting1 - Plot 1
+#Projet ExData_Plotting1 - Plot 3
 #########################################################################################################################################
 
 # input data
@@ -24,10 +24,14 @@ for (i in 3:9){
 #Filter data
 data1 <- subset(data, Date == "2007-2-1" | Date == "2007-2-2")
 
+#Plot3
+png(file = "plot3.png", width=480, height=480)
 
-#Plot1
-png(file = "plot1.png", width=480, height=480)
-
-hist(data1$Global_active_power, col = "red", xlab = "Global Active Power (killowatts)", main = "Global Active Power")
+plot(data1$Date.Time, data1$Sub_metering_1, type = "l", ylab = "Energy sub metering", xlab ="")
+lines(data1$Date.Time, data1$Sub_metering_2, type = "l", col = "red")
+lines(data1$Date.Time, data1$Sub_metering_3, type = "l", col = "blue")
+legend("topright", lty = c(1,1,1), col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
 dev.off()
+
+
